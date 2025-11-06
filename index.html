@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EsToDoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+  
+
+      /* Título com leve brilho */
+      .title {
+        text-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+        letter-spacing: 0.5px;
+      }
+
+      /* Inputs e botões */
+      input, textarea {
+        transition: all 0.3s ease;
+      }
+
+      input:focus, textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      }
+
+      .add-btn {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+      }
+
+      /* Filtros */
+      .filter-btn {
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn.active {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
+        color: white !important;
+        box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+      }
+
+      .filter-btn:hover:not(.active) {
+        transform: translateY(-1px);
+        background-color: #e2e8f0;
+      }
+
+      .tarefa:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .tarefa.concluida span.task-text {
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
+
+      /* Checkbox */
+      .concluir-tarefa:checked {
+        accent-color: #3b82f6;
+        transform: scale(1.2);
+      }
+
+
+    </style>
+
+  </head>
+<body class="flex justify-center items-start pt-12 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-900 dark:to-zinc-800 text-zinc-800 dark:text-blue-500">
+    <main class="w-full max-w-sm lg:max-w-lg 2xl:max-w-2xl bg-white dark:bg-zinc-700 border-gray-300 rounded-lg shadow-xl p-6">
+
+      <!-- Cabeçalho -->
+      <header class="header text-center flex justify-center flex-wrap p-2 flex-col">
+        <h1 class="title text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+          <i class="fas fa-tasks mr-3"></i>EsToDoList
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300">Sua agenda virtual organizada</p>
+      </header>
+
+      <!-- Adicionar Tarefa -->
+      <section>
+        <div class="input-group flex flex-col mb-6 space-y-3">
+          <input 
+            type="text" 
+            id="nova-tarefa-input"
+            placeholder="Digite o título da tarefa..." 
+            class="task-input flex-grow p-3 border rounded-lg focus:outline-none
+             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+          >
+          <textarea 
+            id="descricao-tarefa-input"
+            placeholder="Adicione uma descrição (opcional)..."
+            rows="2"
+            class="descricao-input w-full p-3 border rounded-lg focus:outline-none
+             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white resize-none"
+          ></textarea>
+          <div class="flex space-x-2">
+            <button 
+              id="adicionar-tarefa-btn" 
+              class="add-btn flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-bold transition-colors shadow-md flex items-center justify-center"
+            >
+              <i class="fas fa-plus mr-2"></i>Adicionar Tarefa
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pesquisa e Filtros -->
+      <section class="search-filters mb-6">
+        <div class="search-group mb-4 flex-grow relative">
+          <input 
+            type="text"
+            id="pesquisar-input" 
+            placeholder="Pesquisar..." 
+            class="w-full px-4 py-3 pl-4 border rounded-lg focus:outline-none
+             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+          >
+        </div>
+        
+        <div class="grupo-filtros flex items-center gap-4">
+            <span class="filtros-label text-sm font-medium text-gray-600 dark:text-gray-300">Filtros:</span>
+            <div class="filters-buttons flex gap-2">
+                <button id="filtro-todas" class="filter-btn active px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-medium transition-colors">
+                    Todas
+                </button>
+                <button id="filtro-concluidas" class="filter-btn px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full text-sm font-medium transition-colors">
+                    Concluidas
+                </button>
+                <button id="filtro-prazos" class="filter-btn px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full text-sm font-medium transition-colors">
+                    Prazos
+                </button>
+            </div>
+        </div>
+      </section>
+
+      <!-- Lista de Tarefas -->
+      <h2 class="tasks-title text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">
+  Suas Tarefas
+</h2>
+
+  <ul id="listas-de-tarefas" class="space-y-3">
+    <!-- Tarefa Exemplo -->
+    <li
+      class="tarefa flex flex-col gap-3 p-4 bg-gray-50 dark:bg-zinc-700 rounded-lg border border-gray-200 dark:border-zinc-600 
+            hover:bg-blue-50 dark:hover:bg-zinc-600 transition-all duration-300"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3 flex-grow min-w-[60%]">
+          <input
+            type="checkbox"
+            class="concluir-tarefa w-5 h-5 text-blue-500 rounded focus:ring-blue-400"
+          />
+          <span
+            class="task-text flex-grow text-zinc-700 dark:text-gray-300 font-medium break-words"
+          ></span>
+        </div>
+
+        <!-- Botões de ação -->
+        <div class="task-botoes flex items-center justify-end gap-2 sm:gap-3 flex-wrap">
+          <button
+            class="mostrar-descricao-btn p-2 sm:p-2.5 text-green-500 hover:text-green-600 active:scale-90 transition-transform"
+            title="Ver descrição"
+          >
+            <i class="fas fa-eye text-base sm:text-lg"></i>
+          </button>
+
+          <button
+            class="edit-btn p-2 sm:p-2.5 text-blue-500 hover:text-blue-600 active:scale-90 transition-transform"
+            title="Editar"
+          >
+            <i class="fas fa-edit text-base sm:text-lg"></i>
+          </button>
+
+          <button
+            class="delete-btn p-2 sm:p-2.5 text-red-500 hover:text-red-600 active:scale-90 transition-transform"
+            title="Excluir"
+          >
+            <i class="fas fa-trash text-base sm:text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+
+
+      <!-- Rodapé -->
+      <footer class="footer mt-8 pt-6 border-t border-gray-200 dark:border-zinc-500 text-center">
+        <p class="footer-text text-sm text-gray-600 dark:text-gray-400">
+          Organize sua vida com EsToDoList
+        </p>
+      </footer>
+
+      
+    </main>
+    <script src="script.js" defer></script>
+  </body>
+</html>
