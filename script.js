@@ -1,6 +1,6 @@
 // =============================================================
 //  EsToDoList - Sistema completo de tarefas
-//  Baseado no modelo original EsToDoList (Prof. Rafael Ribas)
+//  Autores - Yan Matheus e auxilio do Profº Rafael
 // =============================================================
 
 // -------------------------------
@@ -259,4 +259,5 @@ filtroPrazos.addEventListener('click', () => aplicarFiltro('prazos'))
 // 14. Inicialização da aplicação
 // -------------------------------
 window.addEventListener('DOMContentLoaded', carregarTarefasSalvas)
+
 
