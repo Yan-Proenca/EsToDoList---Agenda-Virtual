@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="pt-BR" data-theme="blue">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,199 +7,612 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-  
-
-      /* Título com leve brilho */
-      .title {
-        text-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
-        letter-spacing: 0.5px;
+      /* ========== THEMES ========== */
+      [data-theme="blue"] {
+        --bg: linear-gradient(135deg, #eff6ff, #ffffff, #f0f9ff);
+        --main-bg: #ffffff;
+        --main-border: #dbeafe;
+        --main-shadow: 0 20px 60px rgba(37,99,235,0.08);
+        --text: #1e293b;
+        --text-muted: #94a3b8;
+        --text-secondary: #64748b;
+        --heading-gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+        --heading-icon: #2563eb;
+        --input-bg: #ffffff;
+        --input-border: #bfdbfe;
+        --input-border-focus: #60a5fa;
+        --input-icon: #93c5fd;
+        --input-ring: rgba(37,99,235,0.15);
+        --input-text: #1e293b;
+        --input-placeholder: #94a3b8;
+        --btn-add-bg: linear-gradient(135deg, #2563eb, #3b82f6);
+        --btn-add-shadow: 0 4px 14px rgba(37,99,235,0.3);
+        --btn-add-hover-shadow: 0 6px 20px rgba(37,99,235,0.4);
+        --filter-bg: #eff6ff;
+        --filter-hover: #dbeafe;
+        --filter-active-bg: linear-gradient(135deg, #2563eb, #3b82f6);
+        --filter-active-shadow: 0 2px 8px rgba(37,99,235,0.3);
+        --filter-color: #ffffff;
+        --filter-count-bg: rgba(255,255,255,0.35);
+        --filter-count-color: #2563eb;
+        --filter-count-bg-inactive: rgba(37,99,235,0.08);
+        --progress-bg: #dbeafe;
+        --progress-fill: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+        --progress-text: #94a3b8;
+        --progress-pct: #2563eb;
+        --task-bg: #ffffff;
+        --task-border: #dbeafe;
+        --task-hover-border: #93c5fd;
+        --task-hover-shadow: 0 4px 16px rgba(37,99,235,0.08);
+        --task-completed-bg: rgba(239,246,255,0.5);
+        --task-completed-border: #dbeafe;
+        --task-text: #1e293b;
+        --task-text-muted: #94a3b8;
+        --task-completed-text: #94a3b8;
+        --task-action: #94a3b8;
+        --task-desc-border: #f0f4f8;
+        --task-desc-text: #94a3b8;
+        --checkbox-border: #c7d2fe;
+        --checkbox-gradient: linear-gradient(135deg, #2563eb, #3b82f6);
+        --checkbox-color: #2563eb;
+        --edit-border: #bfdbfe;
+        --edit-bg: #ffffff;
+        --edit-text: #1e293b;
+        --edit-cancel-bg: #f1f5f9;
+        --edit-cancel-hover: #e2e8f0;
+        --empty-icon-bg: #eff6ff;
+        --empty-icon-color: #93c5fd;
+        --empty-text: #94a3b8;
+        --empty-sub: #cbd5e1;
+        --theme-btn-bg: #f1f5f9;
+        --theme-btn-hover: #e2e8f0;
+        --theme-btn-icon: #64748b;
+        --scrollbar-thumb: #bfdbfe;
+        --scrollbar-thumb-hover: #93c5fd;
+        --counter-bg: #dbeafe;
+        --counter-text: #2563eb;
+        --footer-border: #dbeafe;
+        --footer-text: #94a3b8;
+        --footer-accent: #3b82f6;
+        --section-label: #94a3b8;
+        --section-title: #334155;
+        --section-title-icon: #3b82f6;
       }
 
-      /* Inputs e botões */
-      input, textarea {
-        transition: all 0.3s ease;
+      [data-theme="dark"] {
+        --bg: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+        --main-bg: #1e293b;
+        --main-border: #334155;
+        --main-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        --text: #e2e8f0;
+        --text-muted: #64748b;
+        --text-secondary: #94a3b8;
+        --heading-gradient: linear-gradient(135deg, #60a5fa, #93c5fd);
+        --heading-icon: #60a5fa;
+        --input-bg: #0f172a;
+        --input-border: #334155;
+        --input-border-focus: #3b82f6;
+        --input-icon: #475569;
+        --input-ring: rgba(59,130,246,0.2);
+        --input-text: #e2e8f0;
+        --input-placeholder: #64748b;
+        --btn-add-bg: linear-gradient(135deg, #3b82f6, #60a5fa);
+        --btn-add-shadow: 0 4px 14px rgba(59,130,246,0.3);
+        --btn-add-hover-shadow: 0 6px 20px rgba(59,130,246,0.45);
+        --filter-bg: #334155;
+        --filter-hover: #475569;
+        --filter-active-bg: linear-gradient(135deg, #3b82f6, #60a5fa);
+        --filter-active-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        --filter-color: #ffffff;
+        --filter-count-bg: rgba(59,130,246,0.2);
+        --filter-count-color: #60a5fa;
+        --filter-count-bg-inactive: rgba(255,255,255,0.1);
+        --progress-bg: #334155;
+        --progress-fill: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        --progress-text: #64748b;
+        --progress-pct: #60a5fa;
+        --task-bg: #0f172a;
+        --task-border: #334155;
+        --task-hover-border: #3b82f6;
+        --task-hover-shadow: 0 4px 16px rgba(59,130,246,0.1);
+        --task-completed-bg: rgba(15,23,42,0.5);
+        --task-completed-border: #334155;
+        --task-text: #e2e8f0;
+        --task-text-muted: #94a3b8;
+        --task-completed-text: #64748b;
+        --task-action: #64748b;
+        --task-desc-border: #334155;
+        --task-desc-text: #94a3b8;
+        --checkbox-border: #475569;
+        --checkbox-gradient: linear-gradient(135deg, #3b82f6, #60a5fa);
+        --checkbox-color: #3b82f6;
+        --edit-border: #334155;
+        --edit-bg: #0f172a;
+        --edit-text: #e2e8f0;
+        --edit-cancel-bg: #334155;
+        --edit-cancel-hover: #475569;
+        --empty-icon-bg: #334155;
+        --empty-icon-color: #475569;
+        --empty-text: #94a3b8;
+        --empty-sub: #475569;
+        --theme-btn-bg: #334155;
+        --theme-btn-hover: #475569;
+        --theme-btn-icon: #94a3b8;
+        --scrollbar-thumb: #334155;
+        --scrollbar-thumb-hover: #475569;
+        --counter-bg: rgba(59,130,246,0.15);
+        --counter-text: #60a5fa;
+        --footer-border: #334155;
+        --footer-text: #64748b;
+        --footer-accent: #3b82f6;
+        --section-label: #64748b;
+        --section-title: #cbd5e1;
+        --section-title-icon: #60a5fa;
       }
 
+      [data-theme="gold-dark"] {
+        --bg: linear-gradient(135deg, #0c0a09, #1c1917, #1c1410);
+        --main-bg: #1c1917;
+        --main-border: #44403c;
+        --main-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        --text: #e7e5e4;
+        --text-muted: #78716c;
+        --text-secondary: #a8a29e;
+        --heading-gradient: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+        --heading-icon: #fbbf24;
+        --input-bg: #0c0a09;
+        --input-border: #44403c;
+        --input-border-focus: #d97706;
+        --input-icon: #57534e;
+        --input-ring: rgba(217,119,6,0.2);
+        --input-text: #e7e5e4;
+        --input-placeholder: #78716c;
+        --btn-add-bg: linear-gradient(135deg, #d97706, #fbbf24);
+        --btn-add-shadow: 0 4px 14px rgba(217,119,6,0.3);
+        --btn-add-hover-shadow: 0 6px 20px rgba(217,119,6,0.45);
+        --filter-bg: #292524;
+        --filter-hover: #44403c;
+        --filter-active-bg: linear-gradient(135deg, #d97706, #fbbf24);
+        --filter-active-shadow: 0 2px 8px rgba(217,119,6,0.3);
+        --filter-color: #0c0a09;
+        --filter-count-bg: rgba(251,191,36,0.2);
+        --filter-count-color: #fbbf24;
+        --filter-count-bg-inactive: rgba(255,255,255,0.08);
+        --progress-bg: #44403c;
+        --progress-fill: linear-gradient(90deg, #d97706, #fbbf24, #fde68a);
+        --progress-text: #78716c;
+        --progress-pct: #fbbf24;
+        --task-bg: #0c0a09;
+        --task-border: #44403c;
+        --task-hover-border: #d97706;
+        --task-hover-shadow: 0 4px 16px rgba(217,119,6,0.1);
+        --task-completed-bg: rgba(12,10,9,0.5);
+        --task-completed-border: #44403c;
+        --task-text: #e7e5e4;
+        --task-text-muted: #a8a29e;
+        --task-completed-text: #78716c;
+        --task-action: #78716c;
+        --task-desc-border: #44403c;
+        --task-desc-text: #a8a29e;
+        --checkbox-border: #57534e;
+        --checkbox-gradient: linear-gradient(135deg, #d97706, #fbbf24);
+        --checkbox-color: #d97706;
+        --edit-border: #44403c;
+        --edit-bg: #0c0a09;
+        --edit-text: #e7e5e4;
+        --edit-cancel-bg: #292524;
+        --edit-cancel-hover: #44403c;
+        --empty-icon-bg: #292524;
+        --empty-icon-color: #78716c;
+        --empty-text: #a8a29e;
+        --empty-sub: #57534e;
+        --theme-btn-bg: #292524;
+        --theme-btn-hover: #44403c;
+        --theme-btn-icon: #a8a29e;
+        --scrollbar-thumb: #44403c;
+        --scrollbar-thumb-hover: #57534e;
+        --counter-bg: rgba(217,119,6,0.15);
+        --counter-text: #fbbf24;
+        --footer-border: #44403c;
+        --footer-text: #78716c;
+        --footer-accent: #fbbf24;
+        --section-label: #78716c;
+        --section-title: #d6d3d1;
+        --section-title-icon: #fbbf24;
+      }
+
+      [data-theme="gold-light"] {
+        --bg: linear-gradient(135deg, #fefce8, #fffbeb, #fef3c7);
+        --main-bg: #ffffff;
+        --main-border: #fde68a;
+        --main-shadow: 0 20px 60px rgba(217,119,6,0.06);
+        --text: #44403c;
+        --text-muted: #a8a29e;
+        --text-secondary: #78716c;
+        --heading-gradient: linear-gradient(135deg, #d97706, #f59e0b, #fbbf24);
+        --heading-icon: #d97706;
+        --input-bg: #ffffff;
+        --input-border: #fde68a;
+        --input-border-focus: #d97706;
+        --input-icon: #fbbf24;
+        --input-ring: rgba(217,119,6,0.15);
+        --input-text: #44403c;
+        --input-placeholder: #a8a29e;
+        --btn-add-bg: linear-gradient(135deg, #d97706, #fbbf24);
+        --btn-add-shadow: 0 4px 14px rgba(217,119,6,0.25);
+        --btn-add-hover-shadow: 0 6px 20px rgba(217,119,6,0.35);
+        --filter-bg: #fffbeb;
+        --filter-hover: #fef3c7;
+        --filter-active-bg: linear-gradient(135deg, #d97706, #fbbf24);
+        --filter-active-shadow: 0 2px 8px rgba(217,119,6,0.25);
+        --filter-color: #ffffff;
+        --filter-count-bg: rgba(255,255,255,0.4);
+        --filter-count-color: #d97706;
+        --filter-count-bg-inactive: rgba(217,119,6,0.08);
+        --progress-bg: #fef3c7;
+        --progress-fill: linear-gradient(90deg, #d97706, #fbbf24, #fde68a);
+        --progress-text: #a8a29e;
+        --progress-pct: #d97706;
+        --task-bg: #ffffff;
+        --task-border: #fde68a;
+        --task-hover-border: #fbbf24;
+        --task-hover-shadow: 0 4px 16px rgba(217,119,6,0.06);
+        --task-completed-bg: rgba(255,251,235,0.5);
+        --task-completed-border: #fde68a;
+        --task-text: #44403c;
+        --task-text-muted: #a8a29e;
+        --task-completed-text: #a8a29e;
+        --task-action: #a8a29e;
+        --task-desc-border: #fef3c7;
+        --task-desc-text: #a8a29e;
+        --checkbox-border: #fbbf24;
+        --checkbox-gradient: linear-gradient(135deg, #d97706, #fbbf24);
+        --checkbox-color: #d97706;
+        --edit-border: #fde68a;
+        --edit-bg: #ffffff;
+        --edit-text: #44403c;
+        --edit-cancel-bg: #f1f5f9;
+        --edit-cancel-hover: #e2e8f0;
+        --empty-icon-bg: #fef3c7;
+        --empty-icon-color: #d97706;
+        --empty-text: #a8a29e;
+        --empty-sub: #d6d3d1;
+        --theme-btn-bg: #fef3c7;
+        --theme-btn-hover: #fde68a;
+        --theme-btn-icon: #78716c;
+        --scrollbar-thumb: #fde68a;
+        --scrollbar-thumb-hover: #fbbf24;
+        --counter-bg: #fef3c7;
+        --counter-text: #d97706;
+        --footer-border: #fde68a;
+        --footer-text: #a8a29e;
+        --footer-accent: #d97706;
+        --section-label: #a8a29e;
+        --section-title: #44403c;
+        --section-title-icon: #d97706;
+      }
+
+      [data-theme="mono"] {
+        --bg: linear-gradient(135deg, #000000, #111111, #000000);
+        --main-bg: #0a0a0a;
+        --main-border: #262626;
+        --main-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        --text: #ffffff;
+        --text-muted: #525252;
+        --text-secondary: #a3a3a3;
+        --heading-gradient: linear-gradient(135deg, #ffffff, #a3a3a3);
+        --heading-icon: #ffffff;
+        --input-bg: #171717;
+        --input-border: #404040;
+        --input-border-focus: #a3a3a3;
+        --input-icon: #525252;
+        --input-ring: rgba(163,163,163,0.2);
+        --input-text: #ffffff;
+        --input-placeholder: #525252;
+        --btn-add-bg: linear-gradient(135deg, #404040, #737373);
+        --btn-add-shadow: 0 4px 14px rgba(163,163,163,0.15);
+        --btn-add-hover-shadow: 0 6px 20px rgba(163,163,163,0.25);
+        --filter-bg: #171717;
+        --filter-hover: #262626;
+        --filter-active-bg: linear-gradient(135deg, #404040, #737373);
+        --filter-active-shadow: 0 2px 8px rgba(163,163,163,0.2);
+        --filter-color: #ffffff;
+        --filter-count-bg: rgba(255,255,255,0.15);
+        --filter-count-color: #e5e5e5;
+        --filter-count-bg-inactive: rgba(255,255,255,0.06);
+        --progress-bg: #262626;
+        --progress-fill: linear-gradient(90deg, #737373, #a3a3a3, #d4d4d4);
+        --progress-text: #525252;
+        --progress-pct: #a3a3a3;
+        --task-bg: #111111;
+        --task-border: #262626;
+        --task-hover-border: #525252;
+        --task-hover-shadow: 0 4px 16px rgba(255,255,255,0.03);
+        --task-completed-bg: rgba(0,0,0,0.4);
+        --task-completed-border: #262626;
+        --task-text: #ffffff;
+        --task-text-muted: #a3a3a3;
+        --task-completed-text: #525252;
+        --task-action: #737373;
+        --task-desc-border: #262626;
+        --task-desc-text: #737373;
+        --checkbox-border: #525252;
+        --checkbox-gradient: linear-gradient(135deg, #404040, #737373);
+        --checkbox-color: #a3a3a3;
+        --edit-border: #404040;
+        --edit-bg: #171717;
+        --edit-text: #ffffff;
+        --edit-cancel-bg: #262626;
+        --edit-cancel-hover: #404040;
+        --empty-icon-bg: #171717;
+        --empty-icon-color: #525252;
+        --empty-text: #737373;
+        --empty-sub: #404040;
+        --theme-btn-bg: #171717;
+        --theme-btn-hover: #262626;
+        --theme-btn-icon: #a3a3a3;
+        --scrollbar-thumb: #404040;
+        --scrollbar-thumb-hover: #737373;
+        --counter-bg: #262626;
+        --counter-text: #d4d4d4;
+        --footer-border: #262626;
+        --footer-text: #525252;
+        --footer-accent: #a3a3a3;
+        --section-label: #525252;
+        --section-title: #e5e5e5;
+        --section-title-icon: #a3a3a3;
+      }
+
+      /* ========== GLOBAL STYLES ========== */
+      body { background: var(--bg); color: var(--text); transition: background 0.4s ease, color 0.4s ease; }
+
+      input, textarea { transition: all 0.3s ease; }
       input:focus, textarea:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+        border-color: var(--input-border-focus) !important;
+        box-shadow: 0 0 0 3px var(--input-ring);
+        outline: none;
       }
+
+      .custom-checkbox {
+        appearance: none; -webkit-appearance: none;
+        width: 1.25rem; height: 1.25rem;
+        border: 2px solid var(--checkbox-border);
+        border-radius: 0.375rem; cursor: pointer;
+        position: relative; transition: all 0.2s ease; flex-shrink: 0;
+      }
+      .custom-checkbox:checked {
+        background: var(--checkbox-gradient);
+        border-color: var(--checkbox-color);
+      }
+      .custom-checkbox:checked::after {
+        content: ''; position: absolute;
+        left: 5px; top: 1px; width: 5px; height: 10px;
+        border: solid white; border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .task-card { animation: taskEnter 0.3s ease forwards; }
 
       .add-btn {
-        background: linear-gradient(to right, #3b82f6, #2563eb);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        background: var(--btn-add-bg);
+        box-shadow: var(--btn-add-shadow);
         transition: all 0.3s ease;
       }
-
       .add-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+        box-shadow: var(--btn-add-hover-shadow);
       }
+      .add-btn:active { transform: translateY(0); }
 
-      /* Filtros */
-      .filter-btn {
-        transition: all 0.3s ease;
-      }
-
+      .filter-btn { transition: all 0.3s ease; }
       .filter-btn.active {
-        background: linear-gradient(to right, #3b82f6, #2563eb);
-        color: white !important;
-        box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        background: var(--filter-active-bg);
+        color: var(--filter-color) !important;
+        box-shadow: var(--filter-active-shadow);
+      }
+      .filter-btn:hover:not(.active) { background-color: var(--filter-hover); }
+
+      .filter-counter {
+        display: inline-block; border-radius: 999px;
+        padding: 0 6px; font-size: 0.7rem; min-width: 18px;
+        text-align: center; margin-left: 3px; vertical-align: middle;
+        background: var(--filter-count-bg-inactive);
+        color: var(--filter-count-color);
+      }
+      .filter-btn.active .filter-counter { background: var(--filter-count-bg); }
+
+      .toast-container {
+        position: fixed; top: 1rem; right: 1rem;
+        z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;
+      }
+      .toast { animation: toastIn 0.4s ease forwards; }
+
+      .prazo-vencido  { background: linear-gradient(135deg, #ef4444, #f97316); color: white; }
+      .prazo-proximo  { background: linear-gradient(135deg, #f59e0b, #eab308); color: white; }
+      .prazo-futuro   { background: linear-gradient(135deg, #22c55e, #3b82f6); color: white; }
+
+      .progress-fill {
+        transition: width 0.5s ease;
+        background: var(--progress-fill);
+        background-size: 200% 100%;
+        animation: gradient-shift 3s ease infinite;
       }
 
-      .filter-btn:hover:not(.active) {
-        transform: translateY(-1px);
-        background-color: #e2e8f0;
+      #lista-scroll-container::-webkit-scrollbar { width: 5px; }
+      #lista-scroll-container::-webkit-scrollbar-track { background: transparent; }
+      #lista-scroll-container::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 999px; }
+      #lista-scroll-container::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+      /* Theme selector panel */
+      #theme-panel {
+        display: none;
+        position: absolute; right: 0; top: calc(100% + 8px);
+        background: var(--main-bg);
+        border: 1px solid var(--main-border);
+        border-radius: 12px; padding: 8px; z-index: 50;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        animation: slideDown 0.2s ease forwards;
       }
-
-      .tarefa:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
+      #theme-panel.open { display: block; }
+      .theme-option {
+        display: flex; align-items: center; gap: 8px;
+        padding: 8px 12px; border-radius: 8px; cursor: pointer;
+        font-size: 0.8rem; font-weight: 500;
+        white-space: nowrap; transition: background 0.2s;
+        color: var(--text);
       }
-
-      .tarefa.concluida span.task-text {
-        text-decoration: line-through;
-        opacity: 0.6;
+      .theme-option:hover { background: var(--filter-hover); }
+      .theme-option.active { background: var(--filter-bg); }
+      .theme-dot {
+        width: 18px; height: 18px; border-radius: 50%;
+        border: 2px solid var(--main-border);
       }
-
-      /* Checkbox */
-      .concluir-tarefa:checked {
-        accent-color: #3b82f6;
-        transform: scale(1.2);
-      }
-
-
     </style>
-
   </head>
-<body class="flex justify-center items-start pt-12 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-900 dark:to-zinc-800 text-zinc-800 dark:text-blue-500">
-    <main class="w-full max-w-sm lg:max-w-lg 2xl:max-w-2xl bg-white dark:bg-zinc-700 border-gray-300 rounded-lg shadow-xl p-6">
+
+  <body class="flex justify-center items-start pt-8 pb-12 min-h-screen">
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <main class="w-full max-w-sm lg:max-w-lg 2xl:max-w-2xl rounded-2xl shadow-xl p-6 mx-4 relative"
+      style="background: var(--main-bg); border: 1px solid var(--main-border); box-shadow: var(--main-shadow); animation: slideDown 0.5s ease forwards;">
 
       <!-- Cabeçalho -->
-      <header class="header text-center flex justify-center flex-wrap p-2 flex-col">
-        <h1 class="title text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-          <i class="fas fa-tasks mr-3"></i>EsToDoList
+      <header class="text-center mb-6 relative">
+        <!-- Theme toggle -->
+        <button id="theme-toggle-btn" class="theme-toggle-abs w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm"
+          style="background: var(--theme-btn-bg); position: absolute; right: 0; top: 0;"
+          title="Trocar tema">
+          <i class="fas fa-palette" id="theme-icon" style="color: var(--theme-btn-icon);"></i>
+        </button>
+
+        <!-- Theme panel -->
+        <div id="theme-panel">
+          <div class="theme-option" data-theme-value="blue">
+            <span class="theme-dot" style="background: linear-gradient(135deg, #3b82f6, #60a5fa); border-color: #3b82f6;"></span>
+            Azul Claro
+          </div>
+          <div class="theme-option" data-theme-value="dark">
+            <span class="theme-dot" style="background: #1e293b; border-color: #475569;"></span>
+            Dark
+          </div>
+          <div class="theme-option" data-theme-value="gold-dark">
+            <span class="theme-dot" style="background: linear-gradient(135deg, #1c1917, #fbbf24); border-color: #d97706;"></span>
+            Dourado Dark
+          </div>
+          <div class="theme-option" data-theme-value="gold-light">
+            <span class="theme-dot" style="background: linear-gradient(135deg, #fffbeb, #fbbf24); border-color: #d97706;"></span>
+            Dourado Claro
+          </div>
+          <div class="theme-option" data-theme-value="mono">
+            <span class="theme-dot" style="background: linear-gradient(135deg, #000000, #737373); border-color: #737373;"></span>
+            Preto & Branco
+          </div>
+        </div>
+
+        <h1 class="text-3xl font-extrabold mb-1" style="background: var(--heading-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+          <i class="fas fa-clipboard-check mr-2" style="color: var(--heading-icon); -webkit-text-fill-color: var(--heading-icon);"></i>EsToDoList
         </h1>
-        <p class="text-gray-600 dark:text-gray-300">Sua agenda virtual organizada</p>
+        <p style="color: var(--text-muted);" class="text-sm">Sua agenda virtual organizada</p>
       </header>
 
       <!-- Adicionar Tarefa -->
-      <section>
-        <div class="input-group flex flex-col mb-6 space-y-3">
-          <input 
-            type="text" 
-            id="nova-tarefa-input"
-            placeholder="Digite o título da tarefa..." 
-            class="task-input flex-grow p-3 border rounded-lg focus:outline-none
-             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
-          >
-          <textarea 
-            id="descricao-tarefa-input"
-            placeholder="Adicione uma descrição (opcional)..."
-            rows="2"
-            class="descricao-input w-full p-3 border rounded-lg focus:outline-none
-             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white resize-none"
-          ></textarea>
-          <div class="flex space-x-2">
-            <button 
-              id="adicionar-tarefa-btn" 
-              class="add-btn flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-bold transition-colors shadow-md flex items-center justify-center"
-            >
-              <i class="fas fa-plus mr-2"></i>Adicionar Tarefa
+      <section class="mb-6">
+        <div class="space-y-3">
+          <div class="relative">
+            <input type="text" id="nova-tarefa-input"
+              placeholder="Digite o título da tarefa..."
+              class="w-full p-3 pl-11 border rounded-xl text-slate-800 placeholder-slate-400 transition-all duration-300"
+              style="background: var(--input-bg); border-color: var(--input-border); color: var(--input-text);">
+            <i class="fas fa-pen-to-square absolute left-4 top-1/2 -translate-y-1/2" style="color: var(--input-icon);"></i>
+          </div>
+          <div class="relative">
+            <textarea id="descricao-tarefa-input"
+              placeholder="Adicione uma descrição (opcional)..."
+              rows="2"
+              class="w-full p-3 pl-11 border rounded-xl placeholder-slate-400 transition-all duration-300 resize-none"
+              style="background: var(--input-bg); border-color: var(--input-border); color: var(--input-text);">
+            </textarea>
+            <i class="fas fa-align-left absolute left-4 top-4" style="color: var(--input-icon);"></i>
+          </div>
+          <button id="adicionar-tarefa-btn"
+            class="add-btn w-full text-white py-3 rounded-xl font-semibold flex items-center justify-center"
+            style="background: var(--btn-add-bg); box-shadow: var(--btn-add-shadow);">
+            <i class="fas fa-plus mr-2"></i>Adicionar Tarefa
+          </button>
+        </div>
+      </section>
+
+      <!-- Pesquisa e Filtros -->
+      <section class="mb-6">
+        <div class="relative mb-4">
+          <input type="text" id="pesquisar-input"
+            placeholder="Pesquisar tarefas..."
+            class="w-full px-4 py-3 pl-11 border rounded-xl placeholder-slate-400 transition-all duration-300"
+            style="background: var(--input-bg); border-color: var(--input-border); color: var(--input-text);">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2" style="color: var(--input-icon);"></i>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-medium uppercase tracking-wide" style="color: var(--section-label);">Filtrar:</span>
+          <div class="flex gap-1.5 flex-wrap">
+            <button id="filtro-todas" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-colors"
+              style="background: var(--filter-active-bg); color: var(--filter-color);">
+              Todas <span id="contador-todas" class="filter-counter active"></span>
+            </button>
+            <button id="filtro-pendentes" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors"
+              style="background: var(--filter-bg); color: var(--text);">
+              Pendentes <span id="contador-pendentes" class="filter-counter"></span>
+            </button>
+            <button id="filtro-concluidas" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors"
+              style="background: var(--filter-bg); color: var(--text);">
+              Concluídas <span id="contador-concluidas" class="filter-counter"></span>
+            </button>
+            <button id="filtro-prazos" class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors"
+              style="background: var(--filter-bg); color: var(--text);">
+              Com Prazo <span id="contador-prazos" class="filter-counter"></span>
             </button>
           </div>
         </div>
       </section>
 
-      <!-- Pesquisa e Filtros -->
-      <section class="search-filters mb-6">
-        <div class="search-group mb-4 flex-grow relative">
-          <input 
-            type="text"
-            id="pesquisar-input" 
-            placeholder="Pesquisar..." 
-            class="w-full px-4 py-3 pl-4 border rounded-lg focus:outline-none
-             border-blue-200 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
-          >
+      <!-- Barra de Progresso -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-1.5">
+          <span class="text-xs font-medium" id="progresso-texto" style="color: var(--progress-text);">0 de 0 concluídas</span>
+          <span class="text-xs font-bold" id="progresso-porcentagem" style="color: var(--progress-pct);">0%</span>
         </div>
-        
-        <div class="grupo-filtros flex items-center gap-4">
-            <span class="filtros-label text-sm font-medium text-gray-600 dark:text-gray-300">Filtros:</span>
-            <div class="filters-buttons flex gap-2">
-                <button id="filtro-todas" class="filter-btn active px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-medium transition-colors">
-                    Todas
-                </button>
-                <button id="filtro-concluidas" class="filter-btn px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full text-sm font-medium transition-colors">
-                    Concluidas
-                </button>
-                <button id="filtro-prazos" class="filter-btn px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 rounded-full text-sm font-medium transition-colors">
-                    Prazos
-                </button>
-            </div>
-        </div>
-      </section>
-
-      <!-- Lista de Tarefas -->
-      <h2 class="tasks-title text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300">
-  Suas Tarefas
-</h2>
-
-  <ul id="listas-de-tarefas" class="space-y-3">
-    <!-- Tarefa Exemplo -->
-    <li
-      class="tarefa flex flex-col gap-3 p-4 bg-gray-50 dark:bg-zinc-700 rounded-lg border border-gray-200 dark:border-zinc-600 
-            hover:bg-blue-50 dark:hover:bg-zinc-600 transition-all duration-300"
-    >
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3 flex-grow min-w-[60%]">
-          <input
-            type="checkbox"
-            class="concluir-tarefa w-5 h-5 text-blue-500 rounded focus:ring-blue-400"
-          />
-          <span
-            class="task-text flex-grow text-zinc-700 dark:text-gray-300 font-medium break-words"
-          ></span>
-        </div>
-
-        <!-- Botões de ação -->
-        <div class="task-botoes flex items-center justify-end gap-2 sm:gap-3 flex-wrap">
-          <button
-            class="mostrar-descricao-btn p-2 sm:p-2.5 text-green-500 hover:text-green-600 active:scale-90 transition-transform"
-            title="Ver descrição"
-          >
-            <i class="fas fa-eye text-base sm:text-lg"></i>
-          </button>
-
-          <button
-            class="edit-btn p-2 sm:p-2.5 text-blue-500 hover:text-blue-600 active:scale-90 transition-transform"
-            title="Editar"
-          >
-            <i class="fas fa-edit text-base sm:text-lg"></i>
-          </button>
-
-          <button
-            class="delete-btn p-2 sm:p-2.5 text-red-500 hover:text-red-600 active:scale-90 transition-transform"
-            title="Excluir"
-          >
-            <i class="fas fa-trash text-base sm:text-lg"></i>
-          </button>
+        <div class="w-full h-2 rounded-full overflow-hidden" style="background: var(--progress-bg);">
+          <div id="progresso-barra" class="progress-fill h-full rounded-full" style="width: 0%"></div>
         </div>
       </div>
-    </li>
-  </ul>
 
+      <!-- Lista de Tarefas -->
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-bold" style="color: var(--section-title);">
+          <i class="fas fa-list-check mr-1.5 text-base" style="color: var(--section-title-icon);"></i>Suas Tarefas
+        </h2>
+        <span id="contador-tarefas" class="text-xs font-medium px-2.5 py-1 rounded-full"
+          style="background: var(--counter-bg); color: var(--counter-text);">
+          0 tarefas
+        </span>
+      </div>
 
+      <div class="overflow-y-auto max-h-[45vh] pr-1 -mr-1" id="lista-scroll-container">
+        <ul id="listas-de-tarefas" class="space-y-2.5">
+        </ul>
+      </div>
 
       <!-- Rodapé -->
-      <footer class="footer mt-8 pt-6 border-t border-gray-200 dark:border-zinc-500 text-center">
-        <p class="footer-text text-sm text-gray-600 dark:text-gray-400">
-          Organize sua vida com EsToDoList
+      <footer class="mt-8 pt-4 text-center" style="border-top: 1px solid var(--footer-border);">
+        <p class="text-xs" style="color: var(--footer-text);">
+          Organize sua vida com <span class="font-semibold" style="color: var(--footer-accent);">EsToDoList</span>
         </p>
       </footer>
-
-      
     </main>
+
     <script src="script.js" defer></script>
   </body>
 </html>
+
