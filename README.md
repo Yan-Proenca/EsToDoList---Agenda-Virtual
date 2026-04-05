@@ -1,24 +1,53 @@
-# EsToDoList---Agenda-Virtual
-EsToDoList é uma agenda virtual moderna e intuitiva que permite criar, organizar e acompanhar suas tarefas diárias. Com design responsivo, modo escuro, filtros e estatísticas em tempo real, ela ajuda você a manter o foco e aumentar sua produtividade de forma simples e eficiente. EsToDoList é uma aplicação web simples e intuitiva desenvolvida com HTML, Tailwind CSS e JavaScript, que tem como objetivo ajudar o usuário a organizar tarefas diárias de forma prática e visual.
+# 📝 EsToDoList — Sistema Completo de Tarefas
 
-## 🚀 Funcionalidades
+O **EsToDoList** é uma aplicação de gestão de tarefas (To-Do List) moderna, intuitiva e altamente personalizável. Desenvolvida para ajudar na organização do dia a dia, a ferramenta oferece funcionalidades avançadas de filtragem, acompanhamento de progresso e personalização visual.
 
-✅ Adicionar tarefas com título e descrição <br>
-✏️ Editar e excluir tarefas <br>
-🔍 Pesquisar e filtrar tarefas <br>
-📅 Criar e visualizar prazos <br>
-📊 Filtrar tarefas concluídas, em andamento ou atrasadas <br>
-💾 Salvamento automático no LocalStorage <br>
-🌓 Suporte a modo escuro (Dark Mode) <br>
-🎨 Interface moderna com Tailwind CSS <br>
-🧠 Tecnologias Utilizadas
+---
 
-HTML5 CSS3 (Tailwind CSS) JavaScript (ES6+) Font Awesome
+## ✨ Funcionalidades Principais
 
-### 📁 Estrutura do Projeto EsToDoList/ │ 
-├── index.html # Estrutura principal da aplicação <br> 
-├── script.js # Lógica e funcionalidades <br>
-├── tailwind.config.js <br>
-### Configurações do Tailwind CSS 
-├── settings.json # Configurações do editor (VSCode) <br>
-└── README.md # Documentação do projeto
+* **Gestão de Tarefas**: Adição de títulos e descrições detalhadas para cada tarefa.
+* **Sistema de Prazos**: Definição de datas limite com indicadores visuais coloridos (vencido, próximo ou futuro).
+* **Barra de Progresso Dinâmica**: Acompanhamento em tempo real da percentagem de conclusão das tarefas.
+* **Filtros Inteligentes**: Visualize tarefas por categorias: Todas, Pendentes, Concluídas ou Com Prazo.
+* **Pesquisa em Tempo Real**: Localize rapidamente qualquer tarefa através da barra de busca.
+* **Personalização de Temas**: Escolha entre 5 temas visuais (Azul Claro, Dark, Dourado Dark, Dourado Claro e Preto & Branco).
+* **Persistência de Dados**: Todas as tarefas e preferências de tema são guardadas automaticamente no `localStorage` do navegador.
+* **Notificações (Toasts)**: Feedback visual instantâneo para ações de sucesso, erro ou alerta.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **HTML5**: Estrutura semântica da aplicação.
+* **Tailwind CSS**: Estilização moderna e responsiva via classes utilitárias.
+* **JavaScript (Vanilla)**: Lógica de negócio, manipulação do DOM e gestão de estado assíncrono.
+* **Font Awesome**: Ícones vetoriais para uma interface rica.
+* **Google Fonts (Inter)**: Tipografia otimizada para legibilidade.
+
+---
+
+## 📂 Estrutura do Código
+
+O projeto foi desenvolvido seguindo princípios de **Clean Code**, garantindo que o código seja legível e de fácil manutenção:
+
+* **Variáveis e constantes** bem definidas.
+* **Funções pequenas** e focadas em tarefas únicas (ex: `atualizarProgresso`, `salvarTarefas`).
+* **Manipulação eficiente do DOM** e gestão de eventos.
+* **Nomes descritivos** para funções e variáveis.
+
+---
+
+## 🚀 Como Executar o Projeto
+
+1.  Clone este repositório para a sua máquina local.
+2.  Certifique-se de que os ficheiros `index.html`, `script.js` e `tailwind.config.js` estão na mesma pasta.
+3.  Abra o ficheiro `index.html` em qualquer navegador moderno.
+
+---
+
+## 🧑‍💻 Autor
+
+* **Yan Matheus** — Desenvolvedor Principal
+---
+*Organize a sua vida com EsToDoList!*
